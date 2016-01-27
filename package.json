@@ -33,6 +33,7 @@
     "morgan": "~1.5.3",
     "nconf": "^0.7.1",
     "nsqjs": "^0.7.6",
-    "util": "^0.10.3"
+    "util": "^0.10.3",
+    "clickberry-cassandra-odm": "clickberry/cassandra-odm-nodejs#master"
   }
 }

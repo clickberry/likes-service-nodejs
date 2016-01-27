@@ -1,4 +1,4 @@
-var cassandra = require('../lib/cassandra-odm');
+var cassandra = require('clickberry-cassandra-odm');
 var likesRelationUserSchema = cassandra.Schema(
     {
         relationId: String,

@@ -1,7 +1,7 @@
 var debug = require('debug')('clickberry:likes:worker');
 
 var config = require('./config');
-require('./lib/cassandra-odm').connect(config.get('cassandra:nodes'), config.get('cassandra:keyspace'));
+require('clickberry-cassandra-odm').connect(config.get('cassandra:nodes'), config.get('cassandra:keyspace'));
 
 var LikesType = require('./models/likes-relation-type');
 var LikesUser = require('./models/likes-relation-user');
@@ -10,27 +10,6 @@ var LikeUserState = require('./models/likes-relation-user-state');
 
 var Bus = require('./lib/bus-service');
 var bus = new Bus();
-
-
-//var str =LikeUserState.getSelectQuery()
-//    .where({
-//        a: 'abc',
-//        b: {$gt: 3},
-//        u: {$in: ['aaa', 2, 4]}
-//    }).orderBy({
-//        a: 'asc',
-//        b: 'asc'
-//    })
-//    .limit(1)
-//    .toQueryString();
-//
-//var like=new LikeUserState({ relationId: 'aaaaaaaaaaaaaaa',
-//    userId: '232',
-//    type: 1,
-//    timestamp: 'timestamp'});
-//
-//
-//var str2 = like.getInsertQuery();
 
 bus.on('project-like', function (message) {
     var like = JSON.parse(message.body);
